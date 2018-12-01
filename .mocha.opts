@@ -1,0 +1,4 @@
+--file ./mocha.config.js
+--colors
+--reporter spec
+--ui bdd

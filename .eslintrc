@@ -1,0 +1,19 @@
+{
+  "extends": "mcr-codes",
+  "overrides": [
+    {
+      "files": [
+        "**/*.test.js",
+        "mocha.config.js"
+      ],
+      "env": {
+        "mocha": true,
+      },
+      "globals": {
+        "server": true,
+        "chai": true,
+        "expect": true,
+      }
+    }
+  ]
+}

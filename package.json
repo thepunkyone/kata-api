@@ -1,0 +1,32 @@
+{
+  "name": "kata-api",
+  "version": "1.0.0",
+  "description": "express introduction challenge",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "mocha tests/**/*.test.js --opts .mocha.opts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/MCRcodes/kata-api"
+  },
+  "keywords": [
+    "express",
+    "node",
+    "javascript",
+    "server"
+  ],
+  "author": "Manchester Codes",
+  "dependencies": {
+    "express": "^4.15.3"
+  },
+  "devDependencies": {
+    "chai": "^4.0.2",
+    "chai-http": "^4.2.0",
+    "eslint-config-mcr-codes": "^1.3.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.11.0"
+  }
+}
