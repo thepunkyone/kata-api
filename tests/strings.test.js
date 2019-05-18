@@ -23,7 +23,7 @@ describe('/strings', () => {
   });
 
   describe('GET /upper/{string}', () => {
-    xit('returns the uppercased string', (done) => {
+    it('returns the uppercased string', (done) => {
       chai.request(server)
         .get('/strings/upper/hello')
         .end((err, res) => {
