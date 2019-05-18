@@ -217,7 +217,7 @@ describe('/numbers', () => {
         });
     });
 
-    xit('gives the remainder of dividing -4 by 8', (done) => {
+    it('gives the remainder of dividing -4 by 8', (done) => {
       chai.request(server)
         .post('/numbers/remainder')
         .send({ a: '-4', b: '8' })
@@ -229,9 +229,9 @@ describe('/numbers', () => {
         });
     });
 
-    xit('gives the remainder of dividing 0 by a number', (done) => {
+    it('gives the remainder of dividing 0 by a number', (done) => {
       chai.request(server)
-        .post('/numbers/remainer')
+        .post('/numbers/remainder')
         .send({ a: 0, b: 10 })
         .end((err, res) => {
           expect(err).to.equal(null);
@@ -241,7 +241,7 @@ describe('/numbers', () => {
         });
     });
 
-    xit('errors if dividing by 0', (done) => {
+    it('errors if dividing by 0', (done) => {
       chai.request(server)
         .post('/numbers/remainder')
         .send({ a: 10, b: 0 })
@@ -253,7 +253,7 @@ describe('/numbers', () => {
         });
     });
 
-    xit('errors if a parameter is missing', (done) => {
+    it('errors if a parameter is missing', (done) => {
       chai.request(server)
         .post('/numbers/remainder')
         .send({ a: 'fish' })
@@ -265,7 +265,7 @@ describe('/numbers', () => {
         });
     });
 
-    xit('errors if the parameters are not numbers', (done) => {
+    it('errors if the parameters are not numbers', (done) => {
       chai.request(server)
         .post('/numbers/remainder')
         .send({ a: 'fish', b: 'chips' })
