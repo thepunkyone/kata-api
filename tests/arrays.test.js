@@ -28,7 +28,7 @@ describe('/arrays', () => {
   });
 
   describe('POST /append', () => {
-    xit('returns an array with the value appended', (done) => {
+    it('returns an array with the value appended', (done) => {
       chai.request(server)
         .post('/arrays/append')
         .send({
