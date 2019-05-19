@@ -204,7 +204,7 @@ describe('/numbers', () => {
     });
   });
 
-  describe('GET /remainder?a={number}&b={number}', () => {
+  describe('POST /remainder?a={number}&b={number}', () => {
     it('gives the remainder of dividing 18 by 5', (done) => {
       chai.request(server)
         .post('/numbers/remainder')
