@@ -14,7 +14,7 @@ describe('/arrays', () => {
   });
 
   describe('POST /to-string', () => {
-    xit('returns the stringified array', (done) => {
+    it('returns the stringified array', (done) => {
       chai.request(server)
         .post('/arrays/to-string')
         .send({ array: ['cat', 'dog', 'elephant', 'fox'] })
