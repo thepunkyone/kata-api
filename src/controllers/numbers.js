@@ -43,6 +43,10 @@ exports.divide = (req, res) => {
 };
 
 exports.remainder = (req, res) => {
+  if (req.query.a && req.query.a) {
+    const { a, b } = req.query;
+    res.status(200).json({ result: remainder(Number(a), Number(b)) });
+  }
   const { a, b } = req.body;
   if (a === undefined || b === undefined) {
     res.status(400).json({ error: 'Parameters "a" and "b" are required.' });
