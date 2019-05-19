@@ -88,7 +88,7 @@ describe('/booleans', () => {
   });
 
   describe('GET /is-odd/{number}', () => {
-    xit('returns true when passed an odd number', (done) => {
+    it('returns true when passed an odd number', (done) => {
       chai.request(server)
         .get('/booleans/is-odd/7')
         .end((err, res) => {
@@ -99,7 +99,7 @@ describe('/booleans', () => {
         });
     });
 
-    xit('returns false when passed an even number', (done) => {
+    it('returns false when passed an even number', (done) => {
       chai.request(server)
         .get('/booleans/is-odd/84')
         .end((err, res) => {
@@ -110,7 +110,7 @@ describe('/booleans', () => {
         });
     });
 
-    xit('errors when the value is not numeric', (done) => {
+    it('errors when the value is not numeric', (done) => {
       chai.request(server)
         .get('/booleans/is-odd/bicycle')
         .end((err, res) => {
