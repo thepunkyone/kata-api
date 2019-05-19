@@ -123,7 +123,7 @@ describe('/booleans', () => {
   });
 
   describe('GET /{string}/starts-with/{character}', () => {
-    xit('returns true when the string starts with the given character', (done) => {
+    it('returns true when the string starts with the given character', (done) => {
       chai.request(server)
         .get('/booleans/cat/starts-with/c')
         .end((err, res) => {
@@ -134,7 +134,7 @@ describe('/booleans', () => {
         });
     });
 
-    xit('returns false when the string does not start with the given character', (done) => {
+    it('returns false when the string does not start with the given character', (done) => {
       chai.request(server)
         .get('/booleans/cat/starts-with/d')
         .end((err, res) => {
@@ -145,7 +145,7 @@ describe('/booleans', () => {
         });
     });
 
-    xit('errors when the second argument is not a single character', (done) => {
+    it('errors when the second argument is not a single character', (done) => {
       chai.request(server)
         .get('/booleans/cat/starts-with/cat')
         .end((err, res) => {
