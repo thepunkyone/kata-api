@@ -1,6 +1,6 @@
 describe('/booleans', () => {
   describe('POST /negate', () => {
-    xit('returns false when passed true', (done) => {
+    it('returns false when passed true', (done) => {
       chai.request(server)
         .post('/booleans/negate')
         .send({ value: true })
@@ -12,7 +12,7 @@ describe('/booleans', () => {
         });
     });
 
-    xit('returns true when passed false', (done) => {
+    it('returns true when passed false', (done) => {
       chai.request(server)
         .post('/booleans/negate')
         .send({ value: false })

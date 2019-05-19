@@ -1,0 +1,8 @@
+const express = require('express');
+const booleansController = require('../controllers/booleans');
+
+const router = express.Router();
+
+router.post('/negate', booleansController.negate);
+
+module.exports = router;
