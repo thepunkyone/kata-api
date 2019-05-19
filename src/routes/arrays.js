@@ -6,5 +6,6 @@ const router = express.Router();
 router.post('/element-at-index/:index', arraysController.getNthElement);
 router.post('/to-string', arraysController.toString);
 router.post('/append', arraysController.append);
+router.post('/starts-with-vowel', arraysController.startsWithVowel);
 
 module.exports = router;

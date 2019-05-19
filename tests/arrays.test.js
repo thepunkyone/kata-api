@@ -45,7 +45,7 @@ describe('/arrays', () => {
   });
 
   describe('POST /starts-with-vowel', () => {
-    xit('returns a filtered array of elements starting with a vowel', (done) => {
+    it('returns a filtered array of elements starting with a vowel', (done) => {
       chai.request(server)
         .post('/arrays/starts-with-vowel')
         .send({ array: ['cat', 'dog', 'elephant', 'fox'] })
