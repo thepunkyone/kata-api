@@ -1,4 +1,4 @@
-const { createPerson } = require('../lib/objects');
+const { createPerson, getProperty } = require('../lib/objects');
 
 exports.postPerson = (req, res) => {
   const { name, age } = req.body;
@@ -14,4 +14,13 @@ exports.postPerson = (req, res) => {
   } else {
     res.status(400).json({ error: 'Parameters "name" and "age" are required.' });
   }
+};
+
+exports.getPropertyFromObject = (req, res) => {
+  console.log(req.params, req.body);
+  res.sendStatus(200);
+  // const { property } = req.params;
+  // const object = req.body;
+
+  // res.status(200).json({ result: getProperty(property, object) });
 };

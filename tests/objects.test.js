@@ -52,7 +52,7 @@ describe('/objects', () => {
   describe('GET /objects/{:property}', () => {
     it('returns property on an object', (done) => {
       chai.request(server)
-        .get('objects/name')
+        .get('/objects/name')
         .send({ name: 'Vitnija', age: 30 })
         .end((err, res) => {
           expect(res.status).to.equal(200);
@@ -63,7 +63,7 @@ describe('/objects', () => {
 
     it('errors if object doesn\'t have property', (done) => {
       chai.request(server)
-        .get('objects/height')
+        .get('/objects/height')
         .send({ name: 'Vitnija', age: 30 })
         .end((err, res) => {
           expect(res.status).to.equal(400);
@@ -74,7 +74,7 @@ describe('/objects', () => {
 
     it('errors if not a valid object', (done) => {
       chai.request(server)
-        .get('objects/height')
+        .get('/objects/height')
         .send('height')
         .end((err, res) => {
           expect(res.status).to.equal(400);
