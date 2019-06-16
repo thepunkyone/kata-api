@@ -1,5 +1,5 @@
 describe('/objects', () => {
-  describe('POST /objects/person', () => {
+  describe('POST /objects/{person}', () => {
     it('returns person object', (done) => {
       chai.request(server)
         .post('/objects/person')
@@ -7,7 +7,7 @@ describe('/objects', () => {
         .end((err, res) => {
           expect(err).to.equal(null);
           expect(res.status).to.equal(200);
-          expect(res.body).to.eql({ name: 'Vitnija', age: 30 });
+          expect(res.body.result).to.eql({ name: 'Vitnija', age: 30 });
           done();
         });
     });
