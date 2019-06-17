@@ -55,6 +55,7 @@ describe('/objects', () => {
         .get('/objects/name')
         .send({ name: 'Vitnija', age: 30 })
         .end((err, res) => {
+          expect(err).to.equal(null);
           expect(res.status).to.equal(200);
           expect(res.body).to.eql({ result: 'Vitnija' });
           done();
@@ -66,6 +67,7 @@ describe('/objects', () => {
         .get('/objects/height')
         .send({ name: 'Vitnija', age: 30 })
         .end((err, res) => {
+          expect(err).to.equal(null);
           expect(res.status).to.equal(400);
           expect(res.body).to.eql({ error: 'Property not found.' });
           done();
@@ -77,11 +79,71 @@ describe('/objects', () => {
         .get('/objects/height')
         .send('height')
         .end((err, res) => {
+          expect(err).to.equal(null);
           expect(res.status).to.equal(400);
           expect(res.body).to.eql({ error: 'Not a valid object.' });
           done();
         });
     });
   });
+
+  describe('GET /objects/person', () => {
+    it('returns true if age over 65', (done) => {
+      chai.request(server)
+        .get('/objects/person')
+        .send({ name: 'Maurice', age: 72 })
+        .end((err, res) => {
+          expect(err).to.equal(null);
+          expect(res.status).to.equal(200);
+          expect(res.body).to.eql({ result: true });
+          done();
+        });
+    });
+
+    it('returns if age can be coaxed to number', (done) => {
+      chai.request(server)
+        .get('/objects/person')
+        .send({ name: 'Maurice', age: '72' })
+        .end((err, res) => {
+          expect(err).to.equal(null);
+          expect(res.status).to.equal(200);
+          expect(res.body).to.eql({ result: true });
+          done();
+        });
+    });
+
+    it('returns false if age below 65', (done) => {
+      chai.request(server)
+        .get('/objects/person')
+        .send({ name: 'Alma', age: 20 })
+        .end((err, res) => {
+          expect(err).to.equal(null);
+          expect(res.status).to.equal(200);
+          expect(res.body).to.eql({ result: false });
+          done();
+        });
+    });
+
+    it('errors if age property not found', () => {
+      chai.request(server)
+        .get('/objects/person')
+        .send({ name: 'Lucy' })
+        .end((err, res) => {
+          expect(err).to.equal(null);
+          expect(res.status).to.equal(400);
+          expect(res.body).to.eql({ error: 'Age must be provided' });
+        });
+    });
+
+    it('errors if age property is not a valid number', () => {
+      chai.request(server)
+        .get('/objects/person')
+        .send({ name: 'Lucy', age: 'thirty' })
+        .end((err, res) => {
+          expect(err).to.equal(null);
+          expect(res.status).to.equal(400);
+          expect(res.body).to.eql({ error: 'Age must be a valid number' });
+        });
+    });
+  });
 });
- 

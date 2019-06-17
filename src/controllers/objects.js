@@ -1,4 +1,4 @@
-const { createPerson, getProperty } = require('../lib/objects');
+const { createPerson, getProperty, isOver65 } = require('../lib/objects');
 
 exports.postPerson = (req, res) => {
   const { name, age } = req.body;
@@ -31,4 +31,8 @@ exports.getPropertyFromObject = (req, res) => {
   if (!validatedReqBody) {
     res.status(400).json({ error: 'Not a valid object.' });
   }
+};
+
+exports.checkAge = (req, res) => {
+
 };
