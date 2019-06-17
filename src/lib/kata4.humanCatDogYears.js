@@ -27,7 +27,7 @@ const humanCatDogYears = (number) => {
 };
 
 //Original version
-const humanCatDogYears = (number) => {
+const humanCatDogYears2 = (number) => {
     const catYearOne = 15;
     const dogYearOne = catYearOne;
     const catYearTwo = 9;

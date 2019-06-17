@@ -17,10 +17,18 @@ exports.postPerson = (req, res) => {
 };
 
 exports.getPropertyFromObject = (req, res) => {
-  console.log(req.params, req.body);
-  res.sendStatus(200);
-  // const { property } = req.params;
-  // const object = req.body;
+  const { property } = req.params;
+  const object = req.body;
+  const validatedReqBody = Object.keys(object).length;
 
-  // res.status(200).json({ result: getProperty(property, object) });
+  if (validatedReqBody && property) {
+    if (object.hasOwnProperty(property)) {
+      res.status(200).json({ result: getProperty(property, object) });
+    } else {
+      res.status(400).json({ error: 'Property not found.' });
+    }
+  }
+  if (!validatedReqBody) {
+    res.status(400).json({ error: 'Not a valid object.' });
+  }
 };
