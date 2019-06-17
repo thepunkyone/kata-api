@@ -47,5 +47,16 @@ exports.checkIfOver65 = (req, res) => {
 };
 
 exports.returnAverageAge = (req, res) => {
-  
+  const people = req.body;
+  const validatedReqBody = Object.keys(people).length;
+
+  if (!validatedReqBody) {
+    res.status(400).json({ error: 'Array of people must be supplied.' });
+  } else if (!people.every(p => p.hasOwnProperty('age'))) {
+    res.status(400).json({ error: 'Age property must be supplied for each person.' });
+  } else if (!people.every(p => typeof p.age === 'number')) {
+    res.status(400).json({ error: 'Age property must be a number.' });
+  } else {
+    res.status(200).json({ result: averageAge(people) });
+  }
 };
