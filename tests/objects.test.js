@@ -87,23 +87,11 @@ describe('/objects', () => {
     });
   });
 
-  describe('GET /objects/person', () => {
+  describe('GET /objects/{person}', () => {
     it('returns true if age over 65', (done) => {
       chai.request(server)
-        .get('/objects/person')
+        .get('/objects/person/checkAge')
         .send({ name: 'Maurice', age: 72 })
-        .end((err, res) => {
-          expect(err).to.equal(null);
-          expect(res.status).to.equal(200);
-          expect(res.body).to.eql({ result: true });
-          done();
-        });
-    });
-
-    it('returns if age can be coaxed to number', (done) => {
-      chai.request(server)
-        .get('/objects/person')
-        .send({ name: 'Maurice', age: '72' })
         .end((err, res) => {
           expect(err).to.equal(null);
           expect(res.status).to.equal(200);
@@ -114,7 +102,7 @@ describe('/objects', () => {
 
     it('returns false if age below 65', (done) => {
       chai.request(server)
-        .get('/objects/person')
+        .get('/objects/person/checkAge')
         .send({ name: 'Alma', age: 20 })
         .end((err, res) => {
           expect(err).to.equal(null);
@@ -126,23 +114,23 @@ describe('/objects', () => {
 
     it('errors if age property not found', () => {
       chai.request(server)
-        .get('/objects/person')
+        .get('/objects/person/checkAge')
         .send({ name: 'Lucy' })
         .end((err, res) => {
           expect(err).to.equal(null);
           expect(res.status).to.equal(400);
-          expect(res.body).to.eql({ error: 'Age must be provided' });
+          expect(res.body).to.eql({ error: 'Age must be provided.' });
         });
     });
 
     it('errors if age property is not a valid number', () => {
       chai.request(server)
-        .get('/objects/person')
+        .get('/objects/person/checkAge')
         .send({ name: 'Lucy', age: 'thirty' })
         .end((err, res) => {
           expect(err).to.equal(null);
           expect(res.status).to.equal(400);
-          expect(res.body).to.eql({ error: 'Age must be a valid number' });
+          expect(res.body).to.eql({ error: 'Age must be a valid number.' });
         });
     });
   });

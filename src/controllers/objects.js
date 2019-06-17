@@ -34,5 +34,14 @@ exports.getPropertyFromObject = (req, res) => {
 };
 
 exports.checkAge = (req, res) => {
+  const { age } = req.body;
+  const person = req.body;
 
+  if (!age) {
+    res.status(400).json({ error: 'Age must be provided.' });
+  } else if (typeof age !== 'number') {
+    res.status(400).json({ error: 'Age must be a valid number.' });
+  } else {
+    res.status(200).json({ result: isOver65(person) });
+  }
 };
