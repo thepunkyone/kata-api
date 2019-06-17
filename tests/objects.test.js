@@ -134,4 +134,97 @@ describe('/objects', () => {
         });
     });
   });
+
+  describe('POST /objects/{people}', () => {
+    const people = [
+      {
+        name: 'Susan',
+        age: 43,
+      },
+      {
+        name: 'Jason',
+        age: 35,
+      },
+      {
+        name: 'Clarence',
+        age: 3,
+      },
+    ];
+
+    const peopleWithAgeMissing = [
+      {
+        name: 'Susan',
+        age: 43,
+      },
+      {
+        name: 'Jason',
+      },
+      {
+        name: 'Clarence',
+        age: 3,
+      },
+    ];
+
+    const peopleWithAgeNotANumber = [
+      {
+        name: 'Susan',
+        age: 43,
+      },
+      {
+        name: 'Jason',
+        age: 'thirty three',
+      },
+      {
+        name: 'Clarence',
+        age: 3,
+      },
+    ];
+
+    it('returns average age of people objects in array', (done) => {
+      chai.request(server)
+        .post('/objects/people')
+        .send(people)
+        .end((err, res) => {
+          expect(err).to.equal(null);
+          expect(res.status).to.equal(200);
+          expect(res.body).to.eql({ result: 27 });
+          done();
+        });
+    });
+
+    it('errors if people array is missing', (done) => {
+      chai.request(server)
+        .post('/objects/people')
+        .end((err, res) => {
+          expect(err).to.equal(null);
+          expect(res.status).to.equal(400);
+          expect(res.body).to.eql({ error: 'Array of people must be supplied.' });
+          done();
+        });
+    });
+
+    it('errors if person object does not have age property', (done) => {
+      chai.request(server)
+        .post('/objects/people')
+        .send(peopleWithAgeMissing)
+        .end((err, res) => {
+          expect(err).to.equal(null);
+          expect(res.status).to.equal(400);
+          expect(res.body).to.eql({ error: 'Age property must be supplied for each person.' });
+          done();
+        });
+    });
+
+    it('errors if age property is not a number', (done) => {
+      chai.request(server)
+        .post('/objects/people')
+        .send(peopleWithAgeNotANumber)
+        .end((err, res) => {
+          expect(err).to.equal(null);
+          expect(res.status).to.equal(400);
+          expect(res.body).to.eql({ error: 'Age property must be a number.' });
+          done();
+        });
+    });
+  });
 });

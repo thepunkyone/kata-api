@@ -46,4 +46,6 @@ exports.checkIfOver65 = (req, res) => {
   }
 };
 
-
+exports.returnAverageAge = (req, res) => {
+  
+};
