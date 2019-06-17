@@ -1,4 +1,4 @@
-const { createPerson, getProperty, isOver65 } = require('../lib/objects');
+const { createPerson, getProperty, isOver65, averageAge } = require('../lib/objects');
 
 exports.postPerson = (req, res) => {
   const { name, age } = req.body;
@@ -33,7 +33,7 @@ exports.getPropertyFromObject = (req, res) => {
   }
 };
 
-exports.checkAge = (req, res) => {
+exports.checkIfOver65 = (req, res) => {
   const { age } = req.body;
   const person = req.body;
 
@@ -45,3 +45,5 @@ exports.checkAge = (req, res) => {
     res.status(200).json({ result: isOver65(person) });
   }
 };
+
+
