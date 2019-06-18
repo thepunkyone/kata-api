@@ -26,7 +26,7 @@ describe('POST /boolean-to-word', () => {
   it('Errors if not a boolean', (done) => {
     chai.request(server)
       .post('/boolean-to-word')
-      .send({ value: false })
+      .send({ value: 100 })
       .end((err, res) => {
         expect(err).to.equal(null);
         expect(res.status).to.equal(400);
