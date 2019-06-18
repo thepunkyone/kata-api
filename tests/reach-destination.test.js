@@ -18,7 +18,7 @@ describe('PUT /reach-destination', () => {
       .end((err, res) => {
         expect(err).to.equal(null);
         expect(res.status).to.equal(400);
-        expect(res.body).to.eql({ result: 'Distance and speed values must be valid numbers.' });
+        expect(res.body).to.eql({ error: 'Distance and speed values must be valid numbers.' });
         done();
       });
   });
@@ -30,7 +30,7 @@ describe('PUT /reach-destination', () => {
       .end((err, res) => {
         expect(err).to.equal(null);
         expect(res.status).to.equal(400);
-        expect(res.body).to.eql({ result: 'Distance and speed values must be valid numbers.' });
+        expect(res.body).to.eql({ error: 'Distance and speed values must be valid numbers.' });
         done();
       });
   });
@@ -42,7 +42,7 @@ describe('PUT /reach-destination', () => {
       .end((err, res) => {
         expect(err).to.equal(null);
         expect(res.status).to.equal(400);
-        expect(res.body).to.eql({ result: 'Speed value can\'t be 0.' });
+        expect(res.body).to.eql({ error: 'Speed value can\'t be 0.' });
         done();
       });
   });
