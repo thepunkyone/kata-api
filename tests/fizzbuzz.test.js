@@ -32,10 +32,6 @@ describe('GET /fizzbuzz/{number}', () => {
       });
   });
 
-  it('returns if param can be coaxed to a number', (done) => {
-
-  });
-
   it('returns the param if not divisible by 3 or 5', (done) => {
     chai.request(server)
       .get('/fizzbuzz/7')
@@ -47,12 +43,12 @@ describe('GET /fizzbuzz/{number}', () => {
       });
   });
 
-  it('errors if param can\'t be coaxed to a number', (done) => {
+  it('errors if param is not a number', (done) => {
     chai.request(server)
       .get('/fizzbuzz/hello')
       .end((err, res) => {
         expect(err).to.equal(null);
-        expect(res.status).to.equal(200);
+        expect(res.status).to.equal(400);
         expect(res.body).to.eql({ error: 'Valid number required.' });
         done();
       });
