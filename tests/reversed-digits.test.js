@@ -1,12 +1,12 @@
 describe('POST /reversed-digits', () => {
-  it('returns a number with reversed digits', (done) => {
+  it('returns an array with reversed digits', (done) => {
     chai.request(server)
       .post('/reversed-digits')
       .send({ number: 123456 })
       .end((err, res) => {
         expect(err).to.equal(null);
         expect(res.status).to.equal(200);
-        expect(res.body).to.eql({ result: 654321 });
+        expect(res.body).to.eql({ result: [6, 5, 4, 3, 2, 1] });
         done();
       });
   });
