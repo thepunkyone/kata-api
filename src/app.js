@@ -8,6 +8,7 @@ const fizzBuzzRouter = require('./routes/fizzbuzz');
 const booleanToWordRouter = require('./routes/boolean-to-word');
 const reversedDigitsRouter = require('./routes/reversed-digits');
 const animalYearsRouter = require('./routes/animal-years');
+const reachDestinationRouter = require('./routes/reach-destination');
 
 const app = express();
 
@@ -21,5 +22,6 @@ app.use('/fizzbuzz', fizzBuzzRouter);
 app.use('/boolean-to-word', booleanToWordRouter);
 app.use('/reversed-digits', reversedDigitsRouter);
 app.use('/animal-years/', animalYearsRouter);
+app.use('/reach-destination', reachDestinationRouter);
 
 module.exports = app;
